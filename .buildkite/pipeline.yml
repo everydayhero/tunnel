@@ -1,0 +1,19 @@
+---
+steps:
+  - name: ":docker: :construction:"
+    agents:
+      queue: build
+    plugins:
+      docker-compose:
+        build: app
+
+  - wait
+
+  - name: ":docker: :shipit:"
+    agents:
+      queue: build
+    plugins:
+      docker-compose:
+        push:
+          - "app:index.docker.io/everydayhero/tunnel:${BUILDKITE_BUILD_NUMBER}"
+          - "app:index.docker.io/everydayhero/tunnel:latest"
