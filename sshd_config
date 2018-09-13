@@ -19,6 +19,10 @@ HostbasedAuthentication no
 PermitEmptyPasswords no
 ChallengeResponseAuthentication yes
 PasswordAuthentication yes
+AllowTcpForwarding yes
+AllowAgentForwarding yes
+TCPKeepAlive yes
+PermitTunnel yes
 X11Forwarding no
 X11DisplayOffset 10
 PrintMotd no
