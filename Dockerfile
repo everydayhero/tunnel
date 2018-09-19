@@ -7,6 +7,7 @@ CMD ["/usr/bin/tunnel"]
 
 RUN apt-get update && \
   apt-get install -y openssh-server && \
+  rm -r /var/lib/apt/lists/* && \
   mkdir /var/run/sshd && \
   touch /var/log/lastlog && \
   rm /etc/ssh/ssh_host_*
