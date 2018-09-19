@@ -1,6 +1,5 @@
-#!/usr/bin/env bash
-
-set -euo pipefail
+#!/bin/sh
+set -e
 
 echo "${BANNER:-}" > /etc/issue.net
 
@@ -27,4 +26,5 @@ if [ -n "$AUTHORIZED_KEY" ]; then
   echo "$AUTHORIZED_KEY" | su "$USER" -c 'tee ~/.ssh/authorized_keys' > /dev/null
 fi
 
-exec "$@"
+echo "Starting SSH"
+exec /usr/sbin/sshd -D
