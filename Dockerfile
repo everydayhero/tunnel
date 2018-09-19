@@ -4,6 +4,8 @@ EXPOSE 22
 ENV BANNER="Welcome to the tunnel" USER=tunnel SHELL=/bin/bash PASSWORD="" AUTHORIZED_KEY=""
 ENV TINI_VERSION v0.18.0
 
+HEALTHCHECK --start-period=5s CMD ssh -Q protocol-version 0.0.0.0 | grep 2
+
 ENTRYPOINT ["/tini", "--"]
 CMD ["/usr/bin/tunnel"]
 
